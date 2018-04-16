@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node-nightly
 
 process.chdir(__dirname); // needed for global bin to find libraries
 
