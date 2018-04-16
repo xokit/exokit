@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "exokit-core": "0.0.199",
+    "fode": "^1.7.2",
     "isolator": "0.0.9",
     "magicleap": "0.0.13",
     "minimist": "^1.2.0",
