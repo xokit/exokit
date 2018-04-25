@@ -33,13 +33,15 @@ const navigate = url => {
     url = 'http://' + url;
   }
   URL = url;
-  updateWindows();
+  setTitle();
   return URL;
 }
 
 const setTitle = x => {
-  if (TITLE != x) {
-    TITLE = x;
+  if (TITLE !== x || x == null) {
+    if (x != null) {
+      TITLE = x;
+    }
     prevTitle = null;
     updateWindows();
   }
