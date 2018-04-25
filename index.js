@@ -49,7 +49,7 @@ const setTitle = x => {
 let prevTitle = null;
 const updateWindows = () => {
   if (prevTitle !== fullTitle) {
-    const base = `${URL} - ${NAME}@${NAME}`
+    const base = `${URL} - ${NAME}@${VERSION}`
     if (TITLE) {
       fullTitle = `${TITLE} | ${base}`;
     } else {
