@@ -3276,7 +3276,7 @@ const _makeWindow = (options = {}, parent = null, top = null) => {
   window.Boolean = Boolean;
   window.Number = Number;
   window.String = String;
-  window.Object = Object;
+  //window.Object = Object;
   window.Array = Array;
   window.Symbol = Symbol;
   window.Buffer = Buffer; // XXX non-standard
