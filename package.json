@@ -1,5 +1,5 @@
 {
-  "name": "exokit",
+  "name": "xokit",
   "version": "0.0.206",
   "description": "Javascript web browser for the post-screen world",
   "engines": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webmixedreality/exokit-windows.git"
+    "url": "git+https://github.com/xokit/xokit.git"
   },
   "keywords": [
     "browser",
@@ -28,11 +28,14 @@
     "magic leap"
   ],
   "author": "Avaer Kazmer <a@modules.io>",
-  "license": "ISC",
+  "contributors": [
+    "Shawn Presser <shawnpresser@gmail.com>"
+  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/webmixedreality/exokit-windows/issues"
+    "url": "https://github.com/xokit/xokit/issues"
   },
-  "homepage": "https://github.com/webmixedreality/exokit-windows#readme",
+  "homepage": "https://github.com/xokit/xokit#readme",
   "dependencies": {
     "exokit-core": "0.0.235",
     "isolator": "0.0.9",
