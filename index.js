@@ -9,13 +9,13 @@ const vm = require('vm');
 const repl = require('repl');
 const mkdirp = require('mkdirp');
 const replHistory = require('repl.history');
-const exokit = require('exokit-core');
+const core = require('./core.js');
 const minimist = require('minimist');
 const UPNG = require('upng-js');
-const {version} = require('./package.json');
+const {version, name} = require('./package.json');
 const emojis = require('./assets/emojis');
 const nativeBindingsModulePath = path.join(__dirname, 'native-bindings.js');
-const {THREE} = exokit;
+const {THREE} = core;
 const nativeBindings = require(nativeBindingsModulePath);
 const {nativeVideo, nativeVr, nativeMl, nativeWindow} = nativeBindings;
 
@@ -65,8 +65,8 @@ const args = (() => {
     return {};
   }
 })();
-exokit.setArgs(args);
-exokit.setNativeBindingsModule(nativeBindingsModulePath);
+core.setArgs(args);
+core.setNativeBindingsModule(nativeBindingsModulePath);
 
 nativeBindings.nativeGl.onconstruct = (gl, canvas) => {
   const canvasWidth = canvas.width || innerWidth;
@@ -88,7 +88,7 @@ nativeBindings.nativeGl.onconstruct = (gl, canvas) => {
     const framebufferWidth = nativeWindow.getFramebufferSize(windowHandle).width;
     window.devicePixelRatio = framebufferWidth / canvasWidth;
 
-    const title = `Exokit ${version}`
+    const title = `${name}@${version}`
     nativeWindow.setWindowTitle(windowHandle, title);
 
     const ondomchange = () => {
@@ -417,7 +417,7 @@ nativeWindow.setEventHandler((type, data) => {
 
 // EXPORTS
 
-module.exports = exokit;
+module.exports = core;
 
 // MAIN
 
@@ -976,12 +976,12 @@ if (require.main === module) {
     }
     if (url) {
       if (url === '.') {
-        console.warn('NOTE: You ran `exokit . <url>`\n(Did you mean to run `node . <url>` or `exokit <url>` instead?)')
+        console.warn('NOTE: You ran `${name} . <url>`\n(Did you mean to run `node . <url>` or `${name} <url>` instead?)')
       }
       if (url.indexOf('://') === -1) {
         url = 'http://' + url;
       }
-      return exokit.load(url, {
+      return core.load(url, {
         dataPath,
       })
         .then(window => {
@@ -1062,7 +1062,7 @@ if (require.main === module) {
         }
         window = newWindow;
       };
-      _bindReplWindow(exokit('', {
+      _bindReplWindow(core('', {
         dataPath,
       }));
 
