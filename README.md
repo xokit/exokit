@@ -1,35 +1,32 @@
-# Exokit Browser: Javascript web browser for AR, VR, and Magic Leap
+# xokit browser: Javascript web browser for AR, VR, and WebGL sites
 
 [![Slack](https://exoslack.now.sh/badge.svg)](https://exoslack.now.sh)
-[![Github releases](https://img.shields.io/github/downloads/webmixedreality/exokit/total.svg)](https://github.com/webmixedreality/exokit/releases )
-[![npm package](https://img.shields.io/npm/v/exokit.svg)](https://www.npmjs.com/package/exokit)
-[![Travis CI build status](https://travis-ci.org/modulesio/exokit-windows.svg?branch=master)](https://travis-ci.org/modulesio/exokit-windows)
-[![Appveyor build status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva?svg=true)](https://ci.appveyor.com/project/modulesio/exokit-windows)
-[![Twitter Follow](https://img.shields.io/twitter/follow/webmixedreality.svg?style=social)](https://twitter.com/webmixedreality)
+[![Github releases](https://img.shields.io/github/downloads/xokit/xokit/total.svg)](https://github.com/xokit/xokit/releases )
+[![npm package](https://img.shields.io/npm/v/xokit.svg)](https://www.npmjs.com/package/xokit)
 
 ```sh
-exokit zeovr.io # run WebGL/VR/AR site
+xokit zeovr.io # run WebGL/VR/AR site
 ```
 
-[Exokit Browser](https://exokit.webmr.io) is a brand new, fast, post-screen era web browser written in JavaScript. If a WebGL site runs in Chrome, it will probably run twice as fast in Exokit.
+[xokit browser](https://exokitbrowser.com) is a brand new, fast, post-screen era web browser written in JavaScript. If a WebGL site runs in Chrome, it will probably run twice as fast using `xokit`.
 
-Exokit is a full HTML5 web browser, written as a node.js module. For VR, AR, and WebGL sites, Exokit can do everything a browser can do.
+xokit is a full HTML5 web browser, written as a node.js module. For VR, AR, and WebGL sites, xokit can do everything a browser can do.
 
-It's plain OpenGL and standard libraries under the hood, so it plays nice with Windows, Linux, macOS, and even Magic Leap!
+It's plain OpenGL and standard libraries under the hood, so it plays nice with Windows, Linux, and macOS.
 
-## About Exokit Browser
+## About xokit Browser
 
-Exokit can't render HTML, but it _can_ draw Canvas and WebGL -- natively, and fast -- as well as take keyboard/mouse/mixed reality input with the regular APIs. It's a browser for the post-(2D) world.
+xokit can't render HTML, but it _can_ draw Canvas and WebGL -- natively, and fast -- as well as take keyboard/mouse/mixed reality input with the regular APIs. It's a browser for the post-(2D) world.
 
 Think JSDOM, except it _actually runs_ the DOM in a `window`. Or think Electron, except 300k and no compile step. Or, think an emulator for running web sites.
 
 The multimedia parts (e.g. WebGL) are pluggable native modules. Everything else is Javascript. It's pretty easy to experiment and add new Web APIs.
 
-Exokit runs on Android/iOS, as well as Windows, Linux, and macOS.
+xokit runs on Android/iOS, as well as Windows, Linux, and macOS.
 
 ## Examples
 
-What Exokit *can* do:
+What xokit *can* do:
 
 - Load any `https:` site
 - Parse a programmatic DOM
@@ -46,7 +43,7 @@ What Exokit *can* do:
 - Run tests
 - Power a web bot
 
-What Exokit *cannot* do:
+What xokit *cannot* do:
 
 - Render a web page
 - CSS
@@ -61,7 +58,7 @@ The web is important. The most important part of the web is that it's open. The 
 
 Despite modern browsers being nominally open source, their code is impenetrable. You've probably never compiled a web browser, and almost certainly never added things. Despite the amount of time you spend in a browser.
 
-With Exokit, anyone can write some Javascript to control their experience of the web.
+With xokit, anyone can write some Javascript to control their experience of the web.
 
 #### Platform support?
 
@@ -96,12 +93,3 @@ The core is Javascript and is platform-agnostic. Porting work is restricted to t
 - **No** HTML rendering
 - **No** CSS
 
-## Community
-
-- [Slack](https://communityinviter.com/apps/exokit/exokit)
-
-## Team
-
-- [Avaer](//github.com/modulesio)
-- [Shawn](//github.com/shawwn)
-- [Noah](//github.com/NoahSchiffman)
