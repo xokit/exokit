@@ -1,0 +1,39 @@
+{
+  "name": "window-classlist",
+  "version": "0.0.1",
+  "description": "Not really an Element#classList polyfill.",
+  "main": "classlist.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modulesio/classlist.git"
+  },
+  "keywords": [
+    "classlist",
+    "element",
+    "class",
+    "browser"
+  ],
+  "author": "Avaer Kazmer <a@modules.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modulesio/classlist/issues"
+  },
+  "homepage": "https://github.com/modulesio/classlist",
+  "dependencies": {
+    "component-indexof": "0.0.3",
+    "trim": "0.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.0",
+    "karma": "0.12.31",
+    "karma-browserify": "4.0.0",
+    "karma-chrome-launcher": "0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-sauce-launcher": "0.2.10",
+    "karma-tap": "1.0.3",
+    "tape": "~3.0.3"
+  }
+}
