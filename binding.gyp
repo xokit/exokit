@@ -19,7 +19,7 @@
             'deps/openvr/src/*.cpp',
           ],
           'include_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/include',
+            '<(module_root_dir)/deps/native-graphics-deps/include',
             '<(module_root_dir)/deps/native-canvas-deps/include/core',
             '<(module_root_dir)/deps/native-canvas-deps/include/config',
             '<(module_root_dir)/deps/native-canvas-deps/include/gpu',
@@ -43,8 +43,8 @@
             '<(module_root_dir)/deps/openvr/include',
           ],
           'library_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/windows/glew',
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/windows/glfw',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/windows/glew',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/windows/glfw',
             '<(module_root_dir)/deps/native-canvas-deps/lib/windows',
             '<(module_root_dir)/node_modules/native-audio-deps/lib/windows',
             '<(module_root_dir)/node_modules/native-video-deps/lib/win',
@@ -69,8 +69,8 @@
             {
               'destination': '<(module_root_dir)/build/Release/',
               'files': [
-                '<(module_root_dir)/node_modules/native-graphics-deps/lib/windows/glew/glew32.dll',
-                '<(module_root_dir)/node_modules/native-graphics-deps/lib/windows/glfw/glfw3.dll',
+                '<(module_root_dir)/deps/native-graphics-deps/lib/windows/glew/glew32.dll',
+                '<(module_root_dir)/deps/native-graphics-deps/lib/windows/glfw/glfw3.dll',
                 '<(module_root_dir)/node_modules/native-video-deps/lib/win/avformat-58.dll',
                 '<(module_root_dir)/node_modules/native-video-deps/lib/win/avcodec-58.dll',
                 '<(module_root_dir)/node_modules/native-video-deps/lib/win/avutil-56.dll',
@@ -182,7 +182,7 @@
             '<!@(ls -1 deps/openvr/src/*.cpp)',
           ],
           'include_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/include',
+            '<(module_root_dir)/deps/native-graphics-deps/include',
             '<(module_root_dir)/deps/native-canvas-deps/include/core',
             '<(module_root_dir)/deps/native-canvas-deps/include/config',
             '<(module_root_dir)/deps/native-canvas-deps/include/gpu',
@@ -206,8 +206,8 @@
             '<(module_root_dir)/deps/openvr/include',
           ],
           'library_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/linux/glew',
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/linux/glfw',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/linux/glew',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/linux/glfw',
             '<(module_root_dir)/deps/native-canvas-deps/lib/linux',
             '<(module_root_dir)/node_modules/native-audio-deps/lib/linux',
             '<(module_root_dir)/node_modules/native-video-deps/lib/linux',
@@ -240,8 +240,8 @@
           'ldflags': [
             '-Wl,-Bsymbolic', # required for ffmpeg asm linkage
             '-Wl,--no-as-needed', # required to prevent elision of shared object linkage
-            '-Wl,-rpath,./node_modules/native-graphics-deps/lib/linux/glew',
-            '-Wl,-rpath,./node_modules/native-graphics-deps/lib/linux/glfw',
+            '-Wl,-rpath,./deps/native-graphics-deps/lib/linux/glew',
+            '-Wl,-rpath,./deps/native-graphics-deps/lib/linux/glfw',
             '-Wl,-rpath,./deps/native-canvas-deps/lib/linux',
             '-Wl,-rpath,./node_modules/native-audio-deps/lib/linux',
             '-Wl,-rpath,./node_modules/native-video-deps/lib/linux/libavformat',
@@ -270,7 +270,7 @@
             '<!@(ls -1 deps/openvr/src/*.cpp)',
           ],
           'include_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/include',
+            '<(module_root_dir)/deps/native-graphics-deps/include',
             '<(module_root_dir)/deps/native-canvas-deps/include/core',
             '<(module_root_dir)/deps/native-canvas-deps/include/config',
             '<(module_root_dir)/deps/native-canvas-deps/include/gpu',
@@ -294,8 +294,8 @@
             '<(module_root_dir)/deps/openvr/include',
           ],
           'library_dirs': [
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/macos/glew',
-            '<(module_root_dir)/node_modules/native-graphics-deps/lib/macos/glfw',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/macos/glew',
+            '<(module_root_dir)/deps/native-graphics-deps/lib/macos/glfw',
             '<(module_root_dir)/deps/native-canvas-deps/lib/macos',
             '<(module_root_dir)/node_modules/native-audio-deps/lib/macos',
             '<(module_root_dir)/node_modules/native-video-deps/lib/macos',
