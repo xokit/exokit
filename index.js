@@ -12,7 +12,7 @@ const replHistory = require('repl.history');
 const core = require('./core.js');
 const minimist = require('minimist');
 const UPNG = require('upng-js');
-const {version, name} = require('./package.json');
+const {version: VERSION, name: NAME} = require('./package.json');
 const emojis = require('./assets/emojis');
 const nativeBindingsModulePath = path.join(__dirname, 'native-bindings.js');
 const {THREE} = core;
@@ -24,6 +24,44 @@ const dataPath = __dirname;
 const canvasSymbol = Symbol();
 const contexts = [];
 const _windowHandleEquals = (a, b) => a[0] === b[0] && a[1] === b[1];
+
+let TITLE = '';
+let fullTitle = '';
+let URL = '';
+
+const navigate = url => {
+  if (url.indexOf('://') === -1) {
+    url = 'http://' + url;
+  }
+  URL = url;
+  updateWindows();
+  return URL;
+}
+
+const setTitle = x => {
+  if (TITLE != x) {
+    TITLE = x;
+    prevTitle = null;
+    updateWindows();
+  }
+}
+
+let prevTitle = null;
+const updateWindows = () => {
+  if (prevTitle !== fullTitle) {
+    const base = `${URL} - ${NAME}@${NAME}`
+    if (TITLE) {
+      fullTitle = `${TITLE} | ${base}`;
+    } else {
+      fullTitle = `${base}`;
+    }
+    for (let i = 0; i < contexts.length; i++) {
+      const windowHandle = contexts[i].getWindowHandle();
+      nativeWindow.setWindowTitle(windowHandle, fullTitle);
+    }
+    prevTitle = fullTitle;
+  }
+}
 
 const args = (() => {
   if (require.main === module) {
@@ -88,9 +126,6 @@ nativeBindings.nativeGl.onconstruct = (gl, canvas) => {
     const framebufferWidth = nativeWindow.getFramebufferSize(windowHandle).width;
     window.devicePixelRatio = framebufferWidth / canvasWidth;
 
-    const title = `${name}@${version}`
-    nativeWindow.setWindowTitle(windowHandle, title);
-
     const ondomchange = () => {
       process.nextTick(() => { // show/hide synchronously emits events
         if (canvas.ownerDocument.documentElement.contains(canvas)) {
@@ -116,6 +151,7 @@ nativeBindings.nativeGl.onconstruct = (gl, canvas) => {
       gl.destroy();
     });
 
+    setTitle();
     return true;
   } else {
     return false;
@@ -407,6 +443,7 @@ nativeWindow.setEventHandler((type, data) => {
       case 'quit': {
         context.destroy();
         contexts.splice(contexts.indexOf(context), 1);
+        process.exit(0);
         break;
       }
     }
@@ -641,7 +678,9 @@ if (require.main === module) {
       const _recurse = () => {
         if (args.performance) {
           if (timestamps.frames >= TIMESTAMP_FRAMES) {
-            console.log(`${(TIMESTAMP_FRAMES/(timestamps.total/1000)).toFixed(0)} FPS | ${timestamps.wait}ms wait | ${timestamps.pose}ms pose | ${timestamps.prepare}ms prepare | ${timestamps.events}ms events | ${timestamps.media}ms media | ${timestamps.user}ms user | ${timestamps.submit}ms submit`);
+            const msg = `${(TIMESTAMP_FRAMES/(timestamps.total/1000)).toFixed(0)} FPS | ${timestamps.wait}ms wait | ${timestamps.pose}ms pose | ${timestamps.prepare}ms prepare | ${timestamps.events}ms events | ${timestamps.media}ms media | ${timestamps.user}ms user | ${timestamps.submit}ms submit`;
+            //console.log(msg);
+            setTitle(msg);
 
             timestamps.frames = 0;
             timestamps.wait = 0;
@@ -915,6 +954,7 @@ if (require.main === module) {
             }
           }
         }
+        updateWindows();
         window.tickAnimationFrame();
         if (args.frame || args.minimalFrame) {
           console.log('-'.repeat(80) + 'end frame');
@@ -978,9 +1018,7 @@ if (require.main === module) {
       if (url === '.') {
         console.warn('NOTE: You ran `${name} . <url>`\n(Did you mean to run `node . <url>` or `${name} <url>` instead?)')
       }
-      if (url.indexOf('://') === -1) {
-        url = 'http://' + url;
-      }
+      url = navigate(url);
       return core.load(url, {
         dataPath,
       })
@@ -1066,14 +1104,18 @@ if (require.main === module) {
         dataPath,
       }));
 
-      const _getPrompt = os.platform() !== 'win32' ?
-        () => `[${emojis[Math.floor(Math.random() * emojis.length)]}] `
-      :
-        () => '[x] ';
+      const _getPrompt = () => '> ';
 
       let lastUnderscore = window._;
       const replEval = (cmd, context, filename, callback) => {
         cmd = cmd.slice(0, -1); // remove trailing \n
+
+        if (cmd.startsWith('http://') || cmd.startsWith('https://')) {
+          const url = navigate(cmd);
+          window.location.href = url;
+          callback(null);
+          return;
+        }
 
         let result, err = null, match;
 
@@ -1128,6 +1170,7 @@ if (require.main === module) {
       r.defineCommand('go', {
         help: 'Navigate to <url>',
         action(url) {
+          url = navigate(url);
           window.location.href = url;
           this.clearBufferedCommand();
           this.displayPrompt();
