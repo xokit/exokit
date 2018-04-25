@@ -13,7 +13,7 @@ const parseIntStrict = require('parse-int');
 const parse5 = require('parse5');
 
 const vmOne = require('vm-one');
-const fetch = require('./src/window-fetch');
+const fetch = require('./src/window-fetch/lib/index.js');
 const {XMLHttpRequest} = require('window-xhr');
 const XHRUtils = require('window-xhr/lib/utils');
 const {Request, Response, Blob} = fetch;
